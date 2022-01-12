@@ -1,3 +1,15 @@
 body {
     background-color: yellowgreen;
 }
+.grid {
+    width: 560px;
+    height: 560px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+}
+
+.grid div {
+    width: 70px;
+    height: 70px;
+}

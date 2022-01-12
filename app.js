@@ -1,3 +1,4 @@
 document.addEventListener('DOMContentLoaded', ()=> {
-    console.log('DOMContentLoaded');
+    const grid = document.querySelector('.grid');
+    const width = 8;
 })
