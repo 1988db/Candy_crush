@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     }
 
     //checking for matches
+    //where you cannot start to check for matching rows (wrapped rows)
     const forbiddenCheckIndexesForThree = [
         6,7,
         14,15,
@@ -226,12 +227,34 @@ document.addEventListener('DOMContentLoaded', ()=> {
             }
         }
     }
-    window.setInterval(checkRowForFive, 100);
-    window.setInterval(checkColumnForFive, 100)
-    window.setInterval(checkRowForFour, 100);
-    window.setInterval(checkColumnForFour, 100)
-    window.setInterval(checkRowForThree, 100);
-    window.setInterval(checkColumnForThree, 100);
+
+    //drop candies once some have been cleared
+    function moveDown() {    
+        for (i=0; i < 56; i++) {
+            console.log('moving down')
+            if(squares[i + width].style.backgroundColor == 'white') {
+                squares[i + width].style.backgroundColor = squares[i].style.backgroundColor;
+                squares[i].style.backgroundColor = 'white';                
+            }
+            const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
+            const isFirstRow = firstRow.includes(i);
+            if (isFirstRow && squares[i].style.backgroundColor == 'white') {
+                let randomColor = Math.floor(Math.random() * candyColors.length);
+                squares[i].style.backgroundColor = candyColors[randomColor];
+            }
+        }
+    }
     
+    window.setInterval(
+        function() {
+            moveDown()
+            checkRowForFive()
+            checkColumnForFive()
+            checkRowForFour()
+            checkColumnForFour()
+            checkRowForThree()
+            checkColumnForThree()
+        }, 100
+    )
 
 })
