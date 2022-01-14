@@ -43,28 +43,22 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     function dragStart() {
         colorBeingDragged = this.style.backgroundColor;
-        squareIdBeingDragged = parseInt(this.id);
-        console.log(colorBeingDragged)
-        console.log(this.id, 'dragStart');
+        squareIdBeingDragged = parseInt(this.id);        
     }
 
     function dragOver(e) {
-        e.preventDefault();
-        console.log(this.id, 'dragOver');
+        e.preventDefault();        
     }
 
     function dragEnter(e) {
-        e.preventDefault();
-        console.log(this.id, 'dragEnter');
+        e.preventDefault();       
     }
 
-    function dragLeave() {
-        console.log(this.id, 'dragLeave');
+    function dragLeave() {        
     }
 
     
-    function dragEnd() {
-        console.log(this.id, 'dragEnd');
+    function dragEnd() {        
         //what is valid move?
         let validMoves = [
             squareIdBeingDragged -1,
@@ -84,10 +78,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
         }
     }
 
-    function dragDrop() {
-        console.log(this.id, 'dragDrop');
-        colorBeingReplaced = this.style.backgroundColor;
-        console.log(colorBeingReplaced)
+    function dragDrop() {        
+        colorBeingReplaced = this.style.backgroundColor;        
         squareIdBeingReplaced = parseInt(this.id);
         this.style.backgroundColor = colorBeingDragged;
         squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
@@ -230,8 +222,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     //drop candies once some have been cleared
     function moveDown() {    
-        for (i=0; i < 56; i++) {
-            console.log('moving down')
+        for (i=0; i < 56; i++) {            
             if(squares[i + width].style.backgroundColor == 'white') {
                 squares[i + width].style.backgroundColor = squares[i].style.backgroundColor;
                 squares[i].style.backgroundColor = 'white';                
